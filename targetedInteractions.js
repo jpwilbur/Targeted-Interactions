@@ -21,11 +21,10 @@ const LINK_TYPES = [
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//version 1.3
 var clickValidation = {}, clickObject = {'Element Selector' : ''};
 async function main () {
 	let par = getURLParameters(window.location.href)
-	if (par['clickedElement'] && par['linkType']) { // OP-specific naming "opClickedElement", par['clickedElement'] --> par.clickedElement
+	if (par['clickedElement'] && par['linkType']) {
 		let selector = decodeURIComponent(par['clickedElement']);
 		clickObject['Element Selector'] = selector;
 		let clickElement = document.querySelector(selector);
@@ -88,7 +87,7 @@ function generateQuerySelector(element) {
   let querylength = 0;
   while (currentElement && currentElement.nodeType === Node.ELEMENT_NODE && querylength !== 1) {
     let selector = currentElement.nodeName.toLowerCase();
-    if (currentElement.id) { // DAVE: Remove the break since ID attributes do not guarantee uniqueness, and your `queryLength !== 1` already catches this case
+    if (currentElement.id) { 
       selector = `#${currentElement.id}`;
       selectorParts.unshift(selector);
       break;
